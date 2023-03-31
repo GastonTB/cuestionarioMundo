@@ -8,21 +8,25 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
-        Schema::create('regiones', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->timestamps();
+        Schema::create('comunas', function (Blueprint $table) {
+            $table->integer('id', true);
+            $table->string('comuna', 64);
+            $table->integer('provincia_id');
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('regiones');
+        Schema::dropIfExists('comunas');
     }
 };

@@ -17,8 +17,8 @@ class CalleController extends Controller
      */
     public function index()
     {
-        $calles = Calle::with('ciudad.provincia.region')->get();
-        return $calles;
+        $calles = Calle::with('ciudad.provincia.region')->orderBy('id', 'desc')->get();
+        return response()->json($calles);
     }
 
     /**
@@ -31,6 +31,8 @@ class CalleController extends Controller
         $ciudad = Ciudad::findOrFail($request->ciudad_id);
         $calle->ciudad_id = $ciudad->id;
         $calle->save();
+        return response()->json($calle);
+
     }
 
     /**
@@ -49,7 +51,7 @@ class CalleController extends Controller
             'ciudades' => $ciudades,
             'region' => $region->id,
         ];
-        return $data;
+        return response()->json($data);
 
     }
 
@@ -57,12 +59,13 @@ class CalleController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {   
         $calle = Calle::findOrFail($id);
         $calle->nombre = $request->nombre;
         $ciudad = Ciudad::findOrFail($request->ciudad_id);
         $calle->ciudad_id = $ciudad->id;
         $calle->save();
+        return response()->json($calle);
     }
 
     /**
@@ -70,7 +73,8 @@ class CalleController extends Controller
      */
     public function destroy(string $id)
     {
-        $calle = Calle::destroy($id);
-        return $calle;
+        $calle = Calle::findOrFail($id);
+        $calle->delete();
+        return response()->json(null, 204);
     }
 }

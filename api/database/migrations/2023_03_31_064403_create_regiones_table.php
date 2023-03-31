@@ -8,23 +8,25 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
-        Schema::create('calles', function (Blueprint $table) {
-            $table->id();
+        Schema::create('regiones', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedBigInteger('ciudad_id');
-            $table->foreign('ciudad_id')->references('id')->on('ciudades');
             $table->timestamps();
         });
-    }   
+    }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('calles');
+        Schema::dropIfExists('regiones');
     }
 };

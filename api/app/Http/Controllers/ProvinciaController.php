@@ -1,64 +1,5 @@
 <?php
 
-// namespace App\Http\Controllers;
-
-// use Illuminate\Http\Request;
-// use App\Models\Provincia;
-// use App\Models\Region;
-
-// class ProvinciaController extends Controller
-// {
-//     /**
-//      * Display a listing of the resource.
-//      */
-//     public function index()
-//     {
-//         $provincias = Provincia::all();
-//         return $provincias;
-//     }
-
-//     /**
-//      * Store a newly created resource in storage.
-//      */
-//     public function store(Request $request)
-//     {
-//         $provincia = New Provincia();
-//         $provincia->nombre = $request->nombre;
-//         $region = Region::find($request->region_id);
-//         $provincia->region_id = $region->id;
-//         $provincia->save();
-//     }
-
-//     /**
-//      * Display the specified resource.
-//      */
-//     public function show(string $id)
-//     {
-//         $provincia = Provincia::find($id);
-//         return $provincia;
-//     }
-
-//     /**
-//      * Update the specified resource in storage.
-//      */
-//     public function update(Request $request, string $id)
-//     {
-//         $provincia = Provincia::find($id);
-//         $provincia->nombre = $request->nombre;
-//         $region = Region::find($request->region_id);
-//         $provincia->region_id = $region->id;
-//         $provincia->save();
-//     }
-
-//     /**
-//      * Remove the specified resource from storage.
-//      */
-//     public function destroy(string $id)
-//     {
-//         $provincia = Provincia::destroy($id);
-//         return $provincia;
-//     }
-// }
 namespace App\Http\Controllers;
 
 use App\Models\Provincia;
@@ -70,15 +11,6 @@ class ProvinciaController extends Controller
     {
         $provincias = Provincia::all();
         return response()->json($provincias);
-        // $region_id = $request->query('region');
-
-        // if ($region_id) {
-        //     $provincias = Provincia::where('region_id', $region_id)->get();
-        // } else {
-        //     $provincias = Provincia::all();
-        // }
-
-        // return response()->json($provincias);
 
     }
 
@@ -94,7 +26,7 @@ class ProvinciaController extends Controller
         $provincia->nombre = $request->input('nombre');
         $provincia->region_id = $request->input('region_id');
         $provincia->save();
-        return response()->json($provincia, 201);
+        return response()->json($provincia);
     }
 
     public function update(Request $request, $id)

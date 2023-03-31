@@ -8,23 +8,26 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
-        Schema::create('ciudades', function (Blueprint $table) {
-            $table->id();
+        Schema::create('provincias', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nombre');
-            $table->unsignedBigInteger('provincia_id');
-            $table->foreign('provincia_id')->references('id')->on('provincias');
+            $table->unsignedBigInteger('region_id')->index('provincias_region_id_foreign');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('ciudades');
+        Schema::dropIfExists('provincias');
     }
 };
