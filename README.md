@@ -52,7 +52,10 @@ Sistema para Revisar las Calles existentes en Chile.
 
         4. Escribir en la consola lo siguiente:
         `php artisan key:generate`
-
+        
+        5. Escribir en la consola lo siguiente:
+        `php artisan migrate --seed`
+        
         5. Escribir en la consola lo siguiente:
         `php artisan serve`
 
