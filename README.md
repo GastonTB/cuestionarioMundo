@@ -40,6 +40,7 @@ Sistema para Revisar las Calles existentes en Chile.
     - Si se va a probar con otra base de datos u otro usuario por favor configurar el archivo .env con su información.
 
     - Si se desea probar el proyecto en un servidor externo, habra que modificar los endpoints  de toda la aplicacion.
+    - Se requiere tener instalado composer y php para soportar Laravel 10 (php8.1+)
     - Para hacer funcionar el BackEnd:
         1. Estando en la carpera raiz del proyecto, escribir en la consola lo siguiente:
         `cd api`
